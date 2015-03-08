@@ -62,7 +62,7 @@
                 </p>
             </div>
             <div ng-show="loading == false && products.length > 0" class="row">
-
+               <input ng-model="searchText" type="text"/>
                 <pagination
                         total-items="totalItems"
                         items-per-page="productsPerPage"
@@ -77,7 +77,7 @@
             </div>
             <div class="row" ng-if="loading == false && products.length > 0">
 
-                <div ng-repeat="product in filteredProducts track by $index" class="col-sm-4 col-lg-4 col-md-4">
+                <div ng-repeat="product in filteredProducts | filter:searchText" class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail">
                         <img ng-src="{{product.image[0].url}}" alt="">
                         <div class="caption">
