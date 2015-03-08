@@ -18,7 +18,7 @@ define(['services/routeResolver'], function () {
             //routeResolverProvider.routeConfig.setBaseDirectories('/app/views', '/app/controllers');
 
 
-            
+
             app.register =
             {
                 controller: $controllerProvider.register,
