@@ -12,11 +12,11 @@ define(['services/routeResolver'], function () {
     app.config(['$routeProvider', 'routeResolverProvider', '$controllerProvider',
         '$compileProvider', '$filterProvider', '$provide','$locationProvider',
         function ($routeProvider, routeResolverProvider, $controllerProvider,
-                  $compileProvider, $filterProvider, $provide) {
+                  $compileProvider, $filterProvider, $provide,$locationProvider) {
 
             //Change default views and controllers directory using the following:
             //routeResolverProvider.routeConfig.setBaseDirectories('/app/views', '/app/controllers');
-
+			
             app.register =
             {
                 controller: $controllerProvider.register,
