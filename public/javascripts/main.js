@@ -3,7 +3,7 @@
  */
 require.config({
     baseUrl: '/javascripts/angularjs',
-    urlArgs: 'v=1.0'
+    urlArgs: 'v=1.2'
 });
 
 require(

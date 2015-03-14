@@ -25,7 +25,7 @@ define(['app'], function (app) {
 
            $scope.totalItems = $scope.products.length;
            $scope.currentPage = 1;
-           $scope.productsPerPage = 12;
+           $scope.productsPerPage = 30;
 
            $scope.$watch('currentPage + productsPerPage', function() {
                 var begin = (($scope.currentPage - 1) * $scope.productsPerPage),
