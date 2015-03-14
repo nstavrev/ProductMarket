@@ -24,6 +24,9 @@ define(['app'], function (app) {
             getTopProducts : function() {
               return $http.get('/top');
             },
+            getLastestProducts : function(){
+                return $http.get('/latestProducts');
+            },
             buy : function(productData) {
                 return ShoppingcartService.buy(productData);
             }

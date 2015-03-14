@@ -1,79 +1,59 @@
-
-
-
 <div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div ng-if="homePage" id="carousel-example-generic" class="carousel slide carousel-holder" data-ride="carousel">
+				<carousel interval="myInterval">
+					<slide ng-repeat="slide in slides" class="item" active="slide.active">
+						<img ng-src="{{slide.image}}" style="margin:auto;">
+						<div class="carousel-caption">
+							<div>
+								<h4>{{slide.title}}</h4>
+								<p>{{slide.text}}</p>
+							</div>
+						</div>
+					</slide>
+				</carousel>				
+			</div>
+			<div ng-if="homePage" id="latest-producs-slider" class="carousel slide carousel-holder" data-ride="carousel">
+				<carousel>
+					<slide ng-repeat="products in productSlides" class="item" active="slide.active1">
+						<div class="home-products" ng-repeat="product in products">
+								<img ng-src="{{product.image[0].url}}" src="" class="img-responsive" alt="{{product.name}} Image" />
+								<h2 class="product-name">{{product.name}}</h2>
+								<div class="product-price">${{product.price}}</div>
+								<div class="product-description"><p>{{product.description}}</p></div>
+								<button class="btn-buy" ng-click="buy(product)">Buy</button>
+						</div>
+					</slide>
+				</carousel>				
+			</div>
+		</div>
+	</div>
     <div class="row">
-
         <div class="col-md-3">
-
             <div ng-if="!homePage" class="list-group">
                 <a ng-repeat="category in categories" ng-href="#/category{{parentCategory}}/{{category.name}}" class="list-group-item">{{category.name}}</a>
             </div>
         </div>
-
-        <div class="col-md-9">
-            <div class="row carousel-holder">
-                <div class="col-md-12">
-                    <div ng-if="homePage" id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <carousel interval="myInterval">
-                            <slide ng-repeat="slide in slides" class="item" active="slide.active">
-                                <img ng-src="{{slide.image}}" style="margin:auto;">
-                                <div class="carousel-caption">
-                                    <h4>{{slide.title}}</h4>
-                                    <p>{{slide.text}}</p>
-                                </div>
-                            </slide>
-                        </carousel>
-                    </div>
-                </div>
-                <!--
-                <div class="col-md-12">
-                    <div ng-if="homePage" id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                            </div>
-                            <div class="item">
-                                <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                            </div>
-                            <div class="item">
-                                <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                            </div>
-                        </div>
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
-                    </div>
-                </div>
-                -->
-            </div>
-
+        <div class="col-md-{{columnClass}}">
             <div class="progress_bar" ng-if="loading == true">
                 <p>
                     <img src="/images/ajax-loader.gif"/>
                 </p>
             </div>
             <div ng-show="loading == false && products.length > 0" class="row">
-
-                <pagination
-                        total-items="totalItems"
-                        items-per-page="productsPerPage"
-                        ng-model="currentPage"
-                        max-size="5"
-                        class="pagination-sm pull-right"
-                        boundary-links="true"
-                        rotate="false"
-                        num-pages="numPages">
-                        </pagination>
-
+				<div class="col-md-12">
+					<pagination
+							total-items="totalItems"
+							items-per-page="productsPerPage"
+							ng-model="currentPage"
+							max-size="5"
+							class="pagination-sm pull-right"
+							boundary-links="true"
+							rotate="false"
+							num-pages="numPages">
+					</pagination>
+				</div>
             </div>
             <div class="row" ng-if="loading == false && products.length > 0">
 
@@ -108,17 +88,18 @@
                 No products were found at this category
             </div>
             <div ng-show="loading == false && products.length > 0" class="row">
-
-                <pagination
-                        total-items="totalItems"
-                        items-per-page="productsPerPage"
-                        ng-model="currentPage"
-                        max-size="5"
-                        class="pagination-sm pull-right"
-                        boundary-links="true"
-                        rotate="false"
-                        num-pages="numPages">
-                </pagination>
+				<div class="col-md-12">
+					<pagination
+							total-items="totalItems"
+							items-per-page="productsPerPage"
+							ng-model="currentPage"
+							max-size="5"
+							class="pagination-sm pull-right"
+							boundary-links="true"
+							rotate="false"
+							num-pages="numPages">
+					</pagination>
+				</div>
             </div>
         </div>
 

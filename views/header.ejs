@@ -9,48 +9,56 @@
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link href="/stylesheets/style.css" rel="stylesheet">
-        <script src="/javascripts/jquery-1.11.2.js"></script>
-        <script src="/javascripts/bootstrap.min.js"></script>
-
-        <script src="/javascripts/angular.js"></script>
-        <script src="/javascripts/angular-route.js"></script>
-
-        <script src="/javascripts/require.js"></script>
-        <script src="/javascripts/main.js"></script>
+		<!--<link href="/fonts/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">-->
     </head>
-    <body ng-cloak>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <body ng-controller="menuController" ng-cloak>
+    <nav class="navbar navbar-inverse navbar-fixed-top {{menuClass}}" role="navigation">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#shoppingcart">
-                    <img width="55" src="/images/banner-1-ecommerce.png">
+				<div class="menu-triger-holder">
+					<button id="tiger-main-menu" class="btn-main-menu {{menuClass}}" ng-click="changeMenuClass()">
+						<span></span>
+					</button>
+				</div>
+				<div id="logo-holder">
+					<a href="#/"><img class="img-responsive" src="/images/company-logo.png" alt="company logo"></a>
+				</div>
+                <a class="cart-img-holder" href="#shoppingcart">
+                    <img class="cart-img" src="/images/banner-1-ecommerce.png">
                 </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-
-                <ul class="nav navbar-nav navbar-left" >
-                    <li>
-                        <a href="#/">Home</a>
-                    </li>
-                    <% categories.forEach(function(category, index) { %>
-                    <li>
-                        <a href="#category/<%-category.name%>"><%= category.name %></a>
-                    </li>
-                    <% });%>
-                </ul>
-
-            </div>
-            <!-- /.navbar-collapse -->
+				<span class="ico icon-search"></span>
+				<label for="general-search"><i class="fa fa-search"></i></label>
+				<input type="text" id="general-search" name="general-search" placeholder="Search"/>
         </div>
         <!-- /.container -->
     </nav>
+	<nav id="menu-outer-wrapper" class="menu-outer-wrapper" ng-click="">
+		<div class="main-menu-container has-no-scrollbar">
+			<ul role="navigation" id="main-menu" class="main-menu">
+				<li style="padding-top:10px; padding-bottom: 10px;">
+					<a href="#/" class="category-link">Home</a>
+				</li>
+				<% categories.forEach(function(category, index) { %>
+				<li>
+					<div class="menu-category">
+						<a href="javascript:void(0)" class="category-link"><%= category.name %></a><i class="fa fa-plus"></i>
+					</div>
+					<% if(category.subCategories) { %>
+					<ul class="menu-subcategory">
+						<li>
+							<a href="#category/<%-category.name%>" class="category-link">All</a>
+						</li>
+						<% category.subCategories.forEach(function(subCategory, index) { %>
+						<li>
+							<a ng-href="#category/<%-category.name%>/<%- subCategory.name%>" class="category-link"> <%= subCategory.name %> </a>
+						</li>
+						<% }); %>
+						
+					</ul>
+					<% } %>
+				</li>
+				 <% });%>
+			</ul>
+		</div>
+	</nav>
+	<div class="overlay-blur {{menuClass}}"></div>
+		

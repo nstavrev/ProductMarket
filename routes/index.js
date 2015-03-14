@@ -79,16 +79,16 @@ function insertProducts(categories){
             info : randomString() + randomString() + randomString(),
             image: [
                 {
-                    url: "http://placehold.it/320x150"
+                    url: "http://placehold.it/270x300"
                 },
                 {
-                    url: "http://placehold.it/320x150"
+                    url: "http://placehold.it/270x300"
                 },
                 {
-                    url: "http://placehold.it/320x150"
+                    url: "http://placehold.it/270x300"
                 },
                 {
-                    url: "http://placehold.it/320x150"
+                    url: "http://placehold.it/270x300"
                 }
             ],
             reviews: 13,
@@ -152,6 +152,15 @@ function findHomeProducts(){
   return def.promise();
 };
 
+function findMainCategories() {
+	var def = Deferred();
+	db.collection('categories').find().toArray(function(err,categories){
+	console.log(categories);
+		def.resolve(categories);
+	});
+	return def.promise();
+};
+
 function findProductById(id) {
     var def = Deferred();
     try {
@@ -173,15 +182,9 @@ router.get('/404', function(req,res){
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    var categories = [];
-
-    for(var i=0; i<10; i++){
-        categories.push({
-            id : Math.random()*1000 + 9000,
-            name : "Category " + (i+1)
-        })
-    }
-   res.render('index.ejs', {categories : categories});
+    findMainCategories().done(function(categories){
+		res.render('index.ejs', {categories : categories});
+	});
 });
 
 router.get('/home', function(req,res){
@@ -209,7 +212,7 @@ router.get('/top', function(req,res){
        var slides = [];
        products.forEach(function(product,index){
            slides.push({
-               image: product.image[0].url,
+               image: '/images/watch-sample.jpg',
                text: [product.name][slides.length % 1],
                title : "Only today for 15 $"
            });
@@ -218,6 +221,33 @@ router.get('/top', function(req,res){
        res.send(slides);
 
    });
+});
+
+router.get('/latestProducts', function(req,res){
+	db.collection('products').find().limit(30).toArray(function(err,products){
+		var slides = [];
+        var remainder = products.length%5;
+
+        for(var i=0; i < products.length - remainder; i+= 5) {
+            var productSlide = [];
+            for(var j=i; j < i + 5; j++){
+                productSlide.push(products[j])
+            }
+            slides.push(productSlide);
+        }
+
+        if(remainder != 0){
+            var start = products.length - remainder;
+            var lastSlide = [];
+            for(var k=start; k < products.length; k++){
+                lastSlide.push(products[k]);
+            }
+
+            slides.push(lastSlide);
+        }
+
+        res.send(slides);
+	});
 });
 
 router.get('/sign', function(req,res){
