@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var multer  = require('multer');
+var http = require('http');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -76,5 +77,7 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
+app.listen(3000);
 
 module.exports = app;

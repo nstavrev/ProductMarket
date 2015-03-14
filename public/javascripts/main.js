@@ -9,6 +9,8 @@ require.config({
 require(
     [   'ui.bootstrap',
         'app',
+		'functions',
+		'controllers/menuController',
         'services/routeResolver',
         'services/homeService',
         'services/shoppingcartService',
@@ -17,3 +19,4 @@ require(
     function () {
         angular.bootstrap(document, ['productMarket']);
     });
+	

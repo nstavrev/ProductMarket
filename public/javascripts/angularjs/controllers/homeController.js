@@ -4,17 +4,7 @@ define(['app'], function (app) {
         $scope.parentCategory = $routeParams.name != undefined ? "/" + $routeParams.name : "";
 
         $scope.myInterval = 5000;
-        var slides = $scope.slides = [];
-        $scope.addSlide = function() {
-            var newWidth = 600 + slides.length + 1;
-            slides.push({
-                image: 'http://placekitten.com/' + newWidth + '/300',
-                text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
-                    ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
-            });
-        };
-
-
+      
         $scope.loading = true;
 
         HomeService.getHomeProducts($routeParams.name, $routeParams.sub).then(function(result){
@@ -39,10 +29,25 @@ define(['app'], function (app) {
 
         });
 
+        HomeService.getLastestProducts().then(function(result){
+          console.log(result.data);
+          var slides = $scope.productSlides = result.data;
+        });
+
         $scope.buy = function(product) {
             HomeService.buy(product).then(function(result){
                $scope.shoppingcart = result.data;
             });
         };
+		
+		// size of the columns in second row on home page
+		$scope.columnClass = '9';
+		if($scope.homePage){
+			$scope.columnClass = '12';
+		}
+		
+		
+		
+		
     });
 });
