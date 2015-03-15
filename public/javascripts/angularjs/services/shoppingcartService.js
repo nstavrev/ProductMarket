@@ -16,6 +16,13 @@ define(['app'], function (app) {
             getShoppingcart : function() {
                 return $http.get('/get/shoppingcart');
             },
+            update : function(shoppingcart) {
+              return $http({
+                  url : "/updateCart",
+                  method : "POST",
+                  data : shoppingcart
+              });
+            },
             delete : function(id) {
                 return $http({
                     url : "/deleteProduct",

@@ -3,7 +3,7 @@
  */
 require.config({
     baseUrl: '/javascripts/angularjs',
-    urlArgs: 'v=1.2'
+    urlArgs: 'v=1.3'
 });
 
 require(
@@ -15,7 +15,8 @@ require(
         'services/routeResolver',
         'services/homeService',
         'services/shoppingcartService',
-        'services/productService'
+        'services/productService',
+        'services/checkoutService'
     ],
     function () {
         angular.bootstrap(document, ['productMarket']);

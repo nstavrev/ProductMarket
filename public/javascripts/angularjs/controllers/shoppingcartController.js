@@ -4,7 +4,8 @@ define(['app'], function (app) {
         ShoppingcartService.getShoppingcart().then(function(result){
             $scope.shoppingcart = result.data;
             if($scope.shoppingcart.items) {
-                $scope.calculateGrandTotal = function() {
+                $scope.calculateGrandTotal = function(product) {
+
                     var grandTotal = 0;
                     Object.keys($scope.shoppingcart.items).forEach(function(key, index){
                         console.log($scope.shoppingcart.items[key])
@@ -25,6 +26,17 @@ define(['app'], function (app) {
                 $scope.calculateGrandTotal();
             }
 
+            $scope.showRefreshButton = function() {
+                $scope.refreshButton = true;
+            }
+
+            $scope.refresh = function() {
+              ShoppingcartService.update($scope.shoppingcart).success(function(data){
+                $scope.refreshButton = false;
+              });
+            };
+
         });
+
     });
 });

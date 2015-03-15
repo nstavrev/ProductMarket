@@ -23,6 +23,10 @@
 								<div class="product-price">${{product.price}}</div>
 								<div class="product-description"><p>{{product.description}}</p></div>
 								<button class="btn-buy" ng-click="buy(product)">Buy</button>
+                            <div ng-if="shoppingcart.items[product._id]" class="cart-img-holder">
+                                <div class="cart-circle">{{shoppingcart.items[product._id].qty}}</div>
+                                <img class="img-responsive" src="/images/shoppingcart.jpg"/>
+                            </div>
 						</div>
 					</slide>
 				</carousel>				

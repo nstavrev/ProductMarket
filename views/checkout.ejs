@@ -1,0 +1,21 @@
+<div ng-if="isAnonymous && editable">
+    FirstName : <input ng-model="userData.firstname" type="text"/>
+    LastName : <input ng-model="userData.lastname" type="text"/>
+    Address : <input ng-model="userData.address" type="text"/>
+    Phone : <input ng-model="userData.phone" type="text"/>
+    <button ng-click="checkout()">CheckOut</button>
+</div>
+
+<div ng-if="isAnonymous && !editable">
+    FirstName : {{userData.firstname}}
+    LastName : {{userData.lastName}}
+    Address : {{userData.address}}
+    Phone : {{userData.phone}}
+</div>
+
+<div ng-if="successMessage">
+    {{successMessage}}
+    <a href="#/" class="btn btn-warning">
+        <i class="fa fa-angle-left"></i> Continue Shopping
+    </a>
+</div>

@@ -35,6 +35,7 @@ define(['services/routeResolver'], function () {
                 .when('/category/:name/:sub', route.resolve('home'))
                 .when('/product/:id', route.resolve('product'))
                 .when('/shoppingcart', route.resolve('shoppingcart'))
+                .when('/checkout', route.resolve('checkout'))
                 .otherwise({ redirectTo : "/404"});
 
 
