@@ -146,7 +146,7 @@ function findProducts(category, subCategory) {
 
 function findHomeProducts(){
   var def = Deferred();
-  db.collection('products').find().toArray(function(err,products){
+  db.collection('products').find().limit(300).toArray(function(err,products){
      def.resolve(products);
   });
   return def.promise();
@@ -172,6 +172,17 @@ function findProductById(id) {
         console.log("error");
         def.resolve(undefined);
     }
+    return def.promise();
+};
+
+function autoComplete(term) {
+    var def = Deferred();
+
+    db.collection('products').find({ name : new RegExp(term, 'i')}).toArray(function(err, products){
+       if(err) throw err;
+       def.resolve(products);
+    });
+
     return def.promise();
 };
 
@@ -301,5 +312,24 @@ router.get('/get/product/:id', function(req,res){
     });
 });
 
+
+router.get('/autocomplete', function(req,res){
+
+    autoComplete(req.param('term')).done(function(products){
+       var items = [];
+       products.forEach(function(product, index){
+           res.render('smallProduct.ejs',{product : product }, function(err,html){
+               //items.push(html);
+               items.push({
+                   label : html,
+                   value : req.param("term"),
+                   url : "#/product/" + product._id
+               })
+           });
+       });
+       res.send(items);
+    });
+
+});
 
 module.exports = router;

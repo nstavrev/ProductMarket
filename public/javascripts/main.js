@@ -9,6 +9,7 @@ require.config({
 require(
     [   'ui.bootstrap',
         'app',
+        'directives/autocomplete',
 		'functions',
 		'controllers/menuController',
         'services/routeResolver',

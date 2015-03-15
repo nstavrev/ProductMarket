@@ -9,6 +9,7 @@
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link href="/stylesheets/style.css" rel="stylesheet">
+        <link href="/stylesheets/autocomplete.css" rel="stylesheet" >
 		<!--<link href="/fonts/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">-->
     </head>
     <body ng-controller="menuController" ng-cloak>
@@ -27,7 +28,12 @@
                 </a>
 				<span class="ico icon-search"></span>
 				<label for="general-search"><i class="fa fa-search"></i></label>
-				<input type="text" id="general-search" name="general-search" placeholder="Search"/>
+				<input  auto-complete
+                        ng-model="selected"
+                        type="text"
+                        id="general-search"
+                        name="general-search"
+                        placeholder="Search ..."/>
         </div>
         <!-- /.container -->
     </nav>
