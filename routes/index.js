@@ -195,6 +195,28 @@ function autoComplete(term) {
     return def.promise();
 };
 
+function authenticate(userData) {
+  var def = Deferred();
+
+  db.collection('users').findOne({ username : userData.username, password : userData.password }, function(err, user){
+    if(err) throw err;
+    def.resolve(user);
+  });
+
+  return def.promise();
+};
+
+function register(user) {
+    var def = Deferred();
+
+    db.collection('users').insert(user, function(err, result){
+       if(err) throw err;
+       def.resolve(result);
+    });
+
+    return def.promise();
+};
+
 /*GET error 404 page */
 router.get('/404', function(req,res){
    res.render("404.ejs");
@@ -289,8 +311,42 @@ router.get('/latestProducts', function(req,res){
 	});
 });
 
-router.get('/sign', function(req,res){
+router.get('/login', function(req,res){
    res.render("login.ejs");
+});
+
+router.post('/login', function(req,res){
+    var userData = req.body;
+    authenticate(userData).done(function(user){
+       if(user != undefined) {
+           delete userData.password;
+           req.session.loggedIn = user;
+           req.session.save();
+           res.send(user);
+       } else {
+           res.status(400).send("Invalid credetials !");
+       }
+    });
+});
+
+router.post('/logout', function(req,res){
+   delete req.session.loggedIn;
+   req.session.save();
+   res.send("loggedout");
+});
+
+router.get('/register', function(req,res){
+   res.render('register.ejs');
+});
+
+router.post('/register', function(req,res){
+   var user = req.body;
+   register(user).done(function(user){
+      delete user.password;
+      req.session.loggedIn = user;
+      req.session.save();
+      res.send(user);
+   });
 });
 
 router.get('/shoppingcart',function(req,res){

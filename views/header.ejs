@@ -26,6 +26,20 @@
                 <a class="cart-img-holder" href="#shoppingcart">
                     <img class="cart-img" src="/images/banner-1-ecommerce.png">
                 </a>
+                <div ng-if="!sessionStorage.currentUser">
+                    <a ng-href="#/login">
+                        Sign in
+                    </a>
+                    <a ng-href="#/register">
+                        Sign up
+                    </a>
+                </div>
+                <div ng-if="sessionStorage.currentUser">
+                    <a ng-href="#/myprofile">
+                        My Profile
+                    </a>
+                    <button ng-click="logout()">Logout</button>
+                </div>
 				<span class="ico icon-search"></span>
 				<label for="general-search"><i class="fa fa-search"></i></label>
 				<input  auto-complete

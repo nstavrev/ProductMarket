@@ -16,7 +16,9 @@ require(
         'services/homeService',
         'services/shoppingcartService',
         'services/productService',
-        'services/checkoutService'
+        'services/checkoutService',
+        'services/registerService',
+        'services/loginService'
     ],
     function () {
         angular.bootstrap(document, ['productMarket']);
