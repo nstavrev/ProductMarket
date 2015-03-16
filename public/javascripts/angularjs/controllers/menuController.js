@@ -1,5 +1,5 @@
 define(['app'], function (app) {
-	app.controller('menuController', function($scope, $routeParams, HomeService, LoginService){
+	app.controller('menuController', function($scope, $routeParams, HomeService, LoginService, $location){
             $scope.sessionStorage = sessionStorage;
 
 			$scope.menuClass = 'inactive';
@@ -21,6 +21,7 @@ define(['app'], function (app) {
             $scope.logout = function() {
                 LoginService.logout().success(function(data){
                     delete sessionStorage['currentUser'];
+                    $location.path('/');
                 });
             };
 		}

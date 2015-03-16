@@ -385,6 +385,14 @@ router.get('/isAnonymous', function(req,res){
    res.send(req.session.loggedIn == undefined);
 });
 
+router.get('/profile/details', function(req, res) {
+    if(req.session.loggedIn != undefined) {
+        res.send(req.session.loggedIn);
+    } else {
+        res.status(400).send(undefined);
+    }
+});
+
 router.post('/deleteProduct', function(req,res){
     if(req.session.shoppingcart) {
         var productId = req.body.id;
@@ -438,6 +446,10 @@ router.post('/checkout', function(req,res){
         });
     }
 
+});
+
+router.get('/profile', function(req,res){
+   res.render("profile.ejs");
 });
 
 module.exports = router;

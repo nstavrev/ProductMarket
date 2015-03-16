@@ -38,6 +38,7 @@ define(['services/routeResolver'], function () {
                 .when('/checkout', route.resolve('checkout'))
                 .when('/login', route.resolve('login'))
                 .when('/register', route.resolve('register'))
+                .when('/myprofile', route.resolve('profile'))
                 .otherwise({ redirectTo : "/404"});
 
 

@@ -18,7 +18,8 @@ require(
         'services/productService',
         'services/checkoutService',
         'services/registerService',
-        'services/loginService'
+        'services/loginService',
+        'services/profileService'
     ],
     function () {
         angular.bootstrap(document, ['productMarket']);
