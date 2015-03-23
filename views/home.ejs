@@ -74,7 +74,7 @@
 					<h2 class="product-name"><a target="_blank" ng-href="#product/{{product._id}}">{{product.name}}</a></h2>
 					<div class="product-price">${{product.price}}</div>
 					<div class="product-description"><p>{{product.description}}</p></div>
-					<button class="btn-buy" ng-click="buy(product)">Buy</button>
+					<button class="btn-buy" ng-click="buy(product)">{{labels[locale].buy}}</button>
 					<div ng-if="shoppingcart.items[product._id]" class="cart-img-holder">
 						<div class="cart-circle">{{shoppingcart.items[product._id].qty}}</div>
 						<img class="img-responsive" src="/images/shopping-cart.png"/>
@@ -127,7 +127,7 @@
                         <div class="ratings">
                             <div class="clearfix">
                                 <div class="buy-section">
-                                    <button class="btn-buy" ng-click="buy(product)">Buy</button>
+                                    <button class="btn-buy" ng-click="buy(product)">{{labels[locale].buy}}</button>
                                     <div><span ng-repeat="star in product.stars" class="glyphicon glyphicon-star"></span></div>
                                 </div>
                                 <div ng-if="shoppingcart.items[product._id]" class="cart-img-holder">

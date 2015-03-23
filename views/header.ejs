@@ -31,15 +31,15 @@
                         ng-model="selected" type="text"
                         id="general-search"
                         name="general-search"
-                        placeholder="Search"/>
+                        placeholder="{{labels[locale].search}}"/>
 				
 				<div class="sing-in-and-cart">
 					<div ng-if="sessionStorage.currentUser == undefined">
 						<a ng-href="#/login" class="nav-btn">
-							Log in
+							{{labels[locale].signin}}
 						</a>
 						<a ng-href="#/register" class="nav-btn">
-							Sign up
+                            {{labels[locale].signup}}
 						</a>
 					</div>
 					<div ng-if="sessionStorage.currentUser != undefined">
@@ -50,6 +50,12 @@
 						<img src="/images/shopping-cart.png">
 					</a>
 				</div>
+                <div>
+                    <select ng-model="locale">
+                        <option value="bg">Български</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
         </div>
         <!-- /.container -->
     </nav>

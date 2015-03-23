@@ -18,7 +18,20 @@ var labels = {
         signuphere : "Sign Up Here",
         firstname : "First Name",
         lastname : "Last Name",
-        email : "E-mail"
+        email : "E-mail",
+        search : "Search",
+        buy : "Buy",
+        description : "Description",
+        productinfo : "Product Info",
+        reviews : "Reviews",
+        instock : "In Stock",
+        product  : "Product",
+        price : "Price",
+        quantity : "Quantity",
+        subtotal : "Subtotal",
+        checkout : "Checkout",
+        continueshopping : "Continue Shopping",
+        emptycart : "Your shopping cart is empty"
     },
     bg : {
         signup : "Регистрация",
@@ -30,7 +43,20 @@ var labels = {
         signuphere : "Регистрирай се тук",
         firstname : "Име",
         lastname : "Фамилия",
-        email : "E-mail"
+        email : "E-mail",
+        search : "Търсене",
+        buy : "Купи",
+        description : "Описание",
+        productinfo : "Информация за продукта",
+        reviews : "Преглеждания",
+        instock : "В наличност",
+        product : "Продукт",
+        price : "Цена",
+        quantity : "Количество",
+        subtotal : "Обща цена",
+        checkout : "Поръчай",
+        continueshopping : "Продължи с пазаруването",
+        emptycart : "Вашата количка е празна"
     }
 }
 
