@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Playball';
+    src: url('../fonts/playball/Playball.eot');
+    src: url('../fonts/playball/Playball.eot') format('embedded-opentype'),
+         url('../fonts/playball/Playball.woff') format('woff'),
+         url('../fonts/playball/Playball.ttf') format('truetype'),
+         url('../fonts/playball/Playball.svg#Playball') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

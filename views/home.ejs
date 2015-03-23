@@ -1,45 +1,97 @@
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div ng-if="homePage" id="carousel-example-generic" class="carousel slide carousel-holder" data-ride="carousel">
-				<carousel interval="myInterval">
-					<slide ng-repeat="slide in slides" class="item" active="slide.active">
-						<img ng-src="{{slide.image}}" style="margin:auto;">
-						<div class="carousel-caption">
-							<div>
-								<h4>{{slide.title}}</h4>
-								<p>{{slide.text}}</p>
-							</div>
-						</div>
-					</slide>
-				</carousel>				
+	<div ng-if="homePage" id="main-carousel" class="carousel slide carousel-holder" data-ride="carousel">
+		<carousel interval="myInterval">
+			<slide ng-repeat="slide in slides" class="item" active="slide.active">
+				<img ng-src="{{slide.image}}" style="margin:auto;">
+				<div class="carousel-caption">
+					<div>
+						<h4>{{slide.title}}</h4>
+						<p>{{slide.text}}</p>
+					</div>
+				</div>
+			</slide>
+		</carousel>				
+	</div>
+	<!--
+	<div class="col-md-3">
+		<div id="categories-main-title">Categories </div>
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  <div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingOne">
+			  <h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				  Category 1
+				</a>
+			  </h4>
 			</div>
-			<div ng-if="homePage" id="latest-producs-slider" class="carousel slide carousel-holder" data-ride="carousel">
-				<carousel>
-					<slide ng-repeat="products in productSlides" class="item" active="slide.active1">
-						<div class="home-products" ng-repeat="product in products">
-								<img ng-src="{{product.image[0].url}}" src="" class="img-responsive" alt="{{product.name}} Image" />
-								<h2 class="product-name">{{product.name}}</h2>
-								<div class="product-price">${{product.price}}</div>
-								<div class="product-description"><p>{{product.description}}</p></div>
-								<button class="btn-buy" ng-click="buy(product)">Buy</button>
-                            <div ng-if="shoppingcart.items[product._id]" class="cart-img-holder">
-                                <div class="cart-circle">{{shoppingcart.items[product._id].qty}}</div>
-                                <img class="img-responsive" src="/images/shoppingcart.jpg"/>
-                            </div>
-						</div>
-					</slide>
-				</carousel>				
+			<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+			  <div class="panel-body">
+				<div class="panel-subheading">Subcategory 1</div>
+				<div class="panel-subheading">Subcategory 2</div>
+			  </div>
 			</div>
+		  </div>
+		  <div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingTwo">
+			  <h4 class="panel-title">
+				<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+				 Category 2
+				</a>
+			  </h4>
+			</div>
+			<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+			  <div class="panel-body">
+				<div>Subcategory 1</div>
+				<div>Subcategory 2</div>
+			  </div>
+			</div>
+		  </div>
+		  <div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="headingThree">
+			  <h4 class="panel-title">
+				<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+				 Category 3
+				</a>
+			  </h4>
+			</div>
+			<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+			  <div class="panel-body">
+				<div>Subcategory 1</div>
+				<div>Subcategory 2</div>
+			  </div>
+			</div>
+		  </div>
 		</div>
 	</div>
+	-->
+</div>
+<div ng-if="homePage" id="latest-producs-slider" class="carousel slide carousel-holder" data-ride="carousel">
+	<div class="container">
+		<carousel>
+			<slide ng-repeat="products in productSlides" class="item" active="slide.active1">
+				<div class="home-products" ng-repeat="product in products">
+					<img ng-src="{{product.image[0].url}}" src="" class="img-responsive product-img" alt="{{product.name}} Image" />
+					<h2 class="product-name"><a target="_blank" ng-href="#product/{{product._id}}">{{product.name}}</a></h2>
+					<div class="product-price">${{product.price}}</div>
+					<div class="product-description"><p>{{product.description}}</p></div>
+					<button class="btn-buy" ng-click="buy(product)">Buy</button>
+					<div ng-if="shoppingcart.items[product._id]" class="cart-img-holder">
+						<div class="cart-circle">{{shoppingcart.items[product._id].qty}}</div>
+						<img class="img-responsive" src="/images/shopping-cart.png"/>
+					</div>
+				</div>
+			</slide>
+		</carousel>	
+	</div>
+</div>
+	<div ng-if="!homePage" class="container">
     <div class="row">
         <div class="col-md-3">
-            <div ng-if="!homePage" class="list-group">
+            <div class="list-group">
                 <a ng-repeat="category in categories" ng-href="#/category{{parentCategory}}/{{category.name}}" class="list-group-item">{{category.name}}</a>
             </div>
         </div>
-        <div class="col-md-{{columnClass}}">
+        <div ng-if="!homePage" class="col-md-{{columnClass}}">
             <div class="progress_bar" ng-if="loading == true">
                 <p>
                     <img src="/images/ajax-loader.gif"/>
@@ -63,7 +115,7 @@
 
                 <div ng-repeat="product in filteredProducts track by $index" class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail">
-                        <img ng-src="{{product.image[0].url}}" alt="">
+                        <img ng-src="{{product.image[0].url}}" alt="" class="img-responsive product-img">
                         <div class="caption">
                             <h4 class="pull-right">${{product.price}}</h4>
                             <h4><a href="#product/{{product._id}}">{{product.name}}</a>
@@ -80,7 +132,7 @@
                                 </div>
                                 <div ng-if="shoppingcart.items[product._id]" class="cart-img-holder">
                                     <div class="cart-circle">{{shoppingcart.items[product._id].qty}}</div>
-                                    <img class="img-responsive" src="/images/shoppingcart.jpg"/>
+                                    <img class="img-responsive" src="/images/shopping-cart.png"/>
                                 </div>
                                 <p class="pull-right reviews">{{product.reviews}} reviews</p>
                              </div>
