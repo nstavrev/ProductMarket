@@ -6,6 +6,9 @@ define(['app'], function (app) {
     app.factory('HomeService', function($http, ShoppingcartService){
 
         return {
+            getLabels : function(){
+              return $http.get('/labels');
+            },
             getHomeProducts : function(category, subCategory, page) {
                 var url = '/home/products';
                 if(category) {

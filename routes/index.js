@@ -7,6 +7,34 @@ var ObjectID = mongo.ObjectID;
 
 var Deferred = require('Deferred');
 
+var labels = {
+    en : {
+        signup : "Sign Up",
+        signin : "Sign In",
+        forgotpassword : "Forgot Password ?",
+        username : "Username",
+        password : "Password",
+        donthaveaccount : "Don't have an account!",
+        signuphere : "Sign Up Here",
+        firstname : "First Name",
+        lastname : "Last Name",
+        email : "E-mail"
+    },
+    bg : {
+        signup : "Регистрация",
+        signin : "Вход",
+        forgotpassword : "Забравена парола ?",
+        username : "Потребителско име",
+        password : "Парола",
+        donthaveaccount : "Нямате регистрация !",
+        signuphere : "Регистрирай се тук",
+        firstname : "Име",
+        lastname : "Фамилия",
+        email : "E-mail"
+    }
+}
+
+
 var randomString = function() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -229,6 +257,9 @@ router.get('/', function(req, res) {
 	});
 });
 
+router.get('/labels', function(req,res){
+   res.send(labels);
+});
 router.get('/autocomplete', function(req,res){
 
     autoComplete(req.param('term')).done(function(products){

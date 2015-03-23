@@ -2,6 +2,12 @@ define(['app'], function (app) {
 	app.controller('menuController', function($scope, $routeParams, HomeService, LoginService, $location){
             $scope.sessionStorage = sessionStorage;
 
+            $scope.locale = "bg";
+            HomeService.getLabels().success(function(data){
+               $scope.labels = data;
+            });
+
+
 			$scope.menuClass = 'inactive';
 
 			$scope.changeMenuClass = function(){
