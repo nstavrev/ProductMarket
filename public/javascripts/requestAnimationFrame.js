@@ -33,4 +33,3 @@ if (!Date.now)
     }
 }());
 
-console.log('polyfill')

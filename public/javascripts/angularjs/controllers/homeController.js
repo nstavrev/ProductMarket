@@ -1,5 +1,5 @@
 define(['app'], function (app) {
-    app.register.controller('homeController', function($scope,$routeParams, HomeService){
+    app.register.controller('homeController', function($http, $scope,$routeParams, HomeService){
         $scope.homePage = $routeParams.name == undefined;
         $scope.parentCategory = $routeParams.name != undefined ? "/" + $routeParams.name : "";
 

@@ -31,7 +31,8 @@ var labels = {
         subtotal : "Subtotal",
         checkout : "Checkout",
         continueshopping : "Continue Shopping",
-        emptycart : "Your shopping cart is empty"
+        emptycart : "Your shopping cart is empty",
+        newsletter : "NEWSLETTER"
     },
     bg : {
         signup : "Регистрация",
@@ -56,7 +57,8 @@ var labels = {
         subtotal : "Обща цена",
         checkout : "Поръчай",
         continueshopping : "Продължи с пазаруването",
-        emptycart : "Вашата количка е празна"
+        emptycart : "Вашата количка е празна",
+        newsletter : "БЮЛЕТИН"
     }
 }
 

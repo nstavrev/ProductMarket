@@ -1,4 +1,5 @@
 <div class="container">
+
 	<div ng-if="homePage" id="main-carousel" class="carousel slide carousel-holder" data-ride="carousel">
 		<carousel interval="myInterval">
 			<slide ng-repeat="slide in slides" class="item" active="slide.active">
@@ -127,7 +128,7 @@
                         <div class="ratings">
                             <div class="clearfix">
                                 <div class="buy-section">
-                                    <button class="btn-buy" ng-click="buy(product)">{{labels[locale].buy}}</button>
+                                    <button class="btn- buy" ng-click="buy(product)">{{labels[locale].buy}}</button>
                                     <div><span ng-repeat="star in product.stars" class="glyphicon glyphicon-star"></span></div>
                                 </div>
                                 <div ng-if="shoppingcart.items[product._id]" class="cart-img-holder">
