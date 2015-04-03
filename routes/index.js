@@ -143,16 +143,16 @@ function insertProducts(categories){
             info : randomString() + randomString() + randomString(),
             image: [
                 {
-                    url: "http://placehold.it/270x300"
+                    url: "http://lorempixel.com/270/300?rand=" + Math.random()
                 },
                 {
-                    url: "http://placehold.it/270x300"
+                    url: "http://lorempixel.com/270/300?rand=" + Math.random()
                 },
                 {
-                    url: "http://placehold.it/270x300"
+                    url: "http://lorempixel.com/270/300?rand=" + Math.random()
                 },
                 {
-                    url: "http://placehold.it/270x300"
+                    url: "http://lorempixel.com/270/300?rand=" + Math.random()
                 }
             ],
             reviews: 13,
