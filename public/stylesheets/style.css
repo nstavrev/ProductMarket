@@ -517,7 +517,8 @@ body {
 /* quick view product */
 .view-product-dialog .modal-dialog {
   width: 800px;
-  border: 5px solid #ddd; }
+  border: 5px solid #ddd;
+  border-radius: 5px; }
   .view-product-dialog .modal-dialog .modal-content {
     border: 0;
     border-radius: 0; }
@@ -527,9 +528,27 @@ body {
 .view-product-dialog .main-img {
   border: 1px solid #dfdfdf;
   width: 100%; }
-.view-product-dialog .multiple-img img:hover {
-  border: 1px solid #dfdfdf; }
-
-.pd-8 {
-  padding: 8px; }
+.view-product-dialog .small-img {
+  width: 33%;
+  float: left;
+  padding: 5px 5px 5px 0; }
+  .view-product-dialog .small-img img {
+    border: 1px solid transparent; }
+  .view-product-dialog .small-img img:hover {
+    border: 1px solid #dfdfdf;
+    cursor: pointer; }
+.view-product-dialog .nav-tabs > li.active > a, .view-product-dialog .nav-tabs > li.active > a:hover, .view-product-dialog .nav-tabs > li.active > a:focus,
+.view-product-dialog .nav-tabs > li > a {
+  color: #000;
+  border: none;
+  border-radius: 0; }
+.view-product-dialog .nav-tabs > li.active > a, .view-product-dialog .nav-tabs > li.active > a:hover, .view-product-dialog .nav-tabs > li.active > a:focus {
+  background: #f8f8f8;
+  border-bottom: 5px solid #cdcdcd;
+  border-right: 1px solid #d6d6d6; }
+.view-product-dialog .nav-tabs > li:hover a {
+  border-bottom: 5px solid #cdcdcd; }
+.view-product-dialog .nav-tabs > li > a {
+  border-right: 1px solid #d6d6d6;
+  margin-right: 0; }
 
