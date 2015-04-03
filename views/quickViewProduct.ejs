@@ -1,21 +1,32 @@
 <div class="quick-view-product">
+	 <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
 	<div class="row">
-		<div class="col-md-5 pd-8">
+		<div class="col-md-5">
 			<img ng-src="{{product.image[0].url}}" class="img-responsive main-img" alt="{{product.name}}" />
-			<div class="row">	
-				<div class="multiple-img" ng-repeat="img in product.image">
-					<div class="col-md-4 pd-8">
-						<img ng-src="{{img.url}}" class="img-responsive" alt="{{product.name}}"/>
-					</div>
+			<div class="small-img-holder clearfix">	
+				<div class="small-img" ng-repeat="img in product.image">
+					<img ng-src="{{img.url}}" class="img-responsive" alt="{{product.name}}"/>
 				</div>
-			</div>	
+			</div>
 		</div>
 		<div class="col-md-7">
-			<button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
-			<h3>Product</h3>
-			{{product.name}}
-			${{product.price}}
-			{{product.description}}
+			<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+		        <li class="active"><a href="#summary" data-toggle="tab">{{labels[locale].summary}}</a></li>
+		        <li><a href="#details" data-toggle="tab">{{labels[locale].details}}</a></li>
+		    </ul>
+		    
+		    <div id="my-tab-content" class="tab-content">
+		        <div class="tab-pane active" id="summary">
+					<h3>{{product.name}}</h3>
+					<div>${{product.price}}</div>
+					<div>{{product.description}}</div>
+		        </div>
+		        <div class="tab-pane" id="details">
+		            <h3>Details</h3>
+		        </div>
+		    </div>
+			
 		</div>
 	</div>
+
 </div>

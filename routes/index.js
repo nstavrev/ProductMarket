@@ -34,7 +34,9 @@ var labels = {
         emptycart : "Your shopping cart is empty",
         newsletter : "NEWSLETTER",
         close : "Close",
-        view : "Quick View"
+        view : "Quick View",
+        summary : "Summary",
+        details : "Details"
     },
     bg : {
         signup : "Регистрация",
@@ -62,7 +64,9 @@ var labels = {
         emptycart : "Вашата количка е празна",
         newsletter : "БЮЛЕТИН",
         close : "Затвори",
-        view : "Преглед"
+        view : "Преглед",
+        summary : "Основна информация",
+        details : "Детайли"
     }
 }
 
