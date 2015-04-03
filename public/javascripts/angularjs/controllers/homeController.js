@@ -18,11 +18,6 @@ define(['app'], function (app) {
            $scope.currentPage = 1;
            $scope.productsPerPage = 30;
 
-           $scope.$watch('currentPage + productsPerPage', function() {
-                var begin = (($scope.currentPage - 1) * $scope.productsPerPage),
-                    end = begin + $scope.productsPerPage;
-                $scope.filteredProducts = $scope.products.slice(begin, end);
-           });
         });
 
         HomeService.getTopProducts().then(function(result){

@@ -34,7 +34,8 @@ var labels = {
         emptycart : "Your shopping cart is empty",
         newsletter : "NEWSLETTER",
         close : "Close",
-        view : "Quick View"
+        view : "Quick View",
+        loginError : "Invalid username or password"
     },
     bg : {
         signup : "Регистрация",
@@ -62,7 +63,8 @@ var labels = {
         emptycart : "Вашата количка е празна",
         newsletter : "БЮЛЕТИН",
         close : "Затвори",
-        view : "Преглед"
+        view : "Преглед",
+        loginError : "Невалидно потребителско име или парола"
     }
 }
 
@@ -139,16 +141,16 @@ function insertProducts(categories){
             info : randomString() + randomString() + randomString(),
             image: [
                 {
-                    url: "http://placehold.it/270x300"
+                    url: "http://lorempixel.com/270/300?rand=" + Math.random()
                 },
                 {
-                    url: "http://placehold.it/270x300"
+                    url: "http://lorempixel.com/270/300?rand=" + Math.random()
                 },
                 {
-                    url: "http://placehold.it/270x300"
+                    url: "http://lorempixel.com/270/300?rand=" + Math.random()
                 },
                 {
-                    url: "http://placehold.it/270x300"
+                    url: "http://lorempixel.com/270/300?rand=" + Math.random()
                 }
             ],
             reviews: 13,
@@ -165,7 +167,14 @@ function insertProducts(categories){
     });
     return def.promise();
 };
-
+/*
+ db.collection('categories').remove({}, function(err,res){
+    console.log(res);
+ });
+ db.collection('products').remove({}, function(err,res){
+    console.log(res);
+ });
+*/
 /*
 insertCategories().done(function(categories){
     console.log("Inserted categories " + categories.length);
