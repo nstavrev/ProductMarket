@@ -1,4 +1,8 @@
 $(document).ready(function(){
+	$('.newsletter').hide('slide',{direction:'right'},500);
+	var productDescription = $('.home-products').find('.product-description')[0];
+	$(productDescription).hide('slide',{direction:'right'},500);
+
 	var isOpenMainNav = false;
 	$('#menu-outer-wrapper').click(function(){
 		//hideAnimatedNav()

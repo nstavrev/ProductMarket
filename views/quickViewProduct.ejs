@@ -1,0 +1,21 @@
+<div class="quick-view-product">
+	<div class="row">
+		<div class="col-md-5 pd-8">
+			<img ng-src="{{product.image[0].url}}" class="img-responsive main-img" alt="{{product.name}}" />
+			<div class="row">	
+				<div class="multiple-img" ng-repeat="img in product.image">
+					<div class="col-md-4 pd-8">
+						<img ng-src="{{img.url}}" class="img-responsive" alt="{{product.name}}"/>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div class="col-md-7">
+			<button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+			<h3>Product</h3>
+			{{product.name}}
+			${{product.price}}
+			{{product.description}}
+		</div>
+	</div>
+</div>

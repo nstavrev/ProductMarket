@@ -11,10 +11,10 @@ var labels = {
     en : {
         signup : "Sign Up",
         signin : "Sign In",
-        forgotpassword : "Forgot Password ?",
+        forgotpassword : "Forgot Password?",
         username : "Username",
         password : "Password",
-        donthaveaccount : "Don't have an account!",
+        donthaveaccount : "Don't have an account?",
         signuphere : "Sign Up Here",
         firstname : "First Name",
         lastname : "Last Name",
@@ -32,15 +32,17 @@ var labels = {
         checkout : "Checkout",
         continueshopping : "Continue Shopping",
         emptycart : "Your shopping cart is empty",
-        newsletter : "NEWSLETTER"
+        newsletter : "NEWSLETTER",
+        close : "Close",
+        view : "Quick View"
     },
     bg : {
         signup : "Регистрация",
         signin : "Вход",
-        forgotpassword : "Забравена парола ?",
+        forgotpassword : "Забравена парола?",
         username : "Потребителско име",
         password : "Парола",
-        donthaveaccount : "Нямате регистрация !",
+        donthaveaccount : "Нямате регистрация?",
         signuphere : "Регистрирай се тук",
         firstname : "Име",
         lastname : "Фамилия",
@@ -58,7 +60,9 @@ var labels = {
         checkout : "Поръчай",
         continueshopping : "Продължи с пазаруването",
         emptycart : "Вашата количка е празна",
-        newsletter : "БЮЛЕТИН"
+        newsletter : "БЮЛЕТИН",
+        close : "Затвори",
+        view : "Преглед"
     }
 }
 
@@ -267,7 +271,7 @@ function register(user) {
 
     db.collection('users').insert(user, function(err, result){
        if(err) throw err;
-       def.resolve(result);
+       def.resolve(result[0]);
     });
 
     return def.promise();
@@ -511,4 +515,7 @@ router.get('/profile', function(req,res){
    res.render("profile.ejs");
 });
 
+router.get('/quickViewProduct', function(req, res){
+    res.render('quickViewProduct.ejs')
+})
 module.exports = router;

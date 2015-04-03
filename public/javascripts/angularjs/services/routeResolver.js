@@ -39,7 +39,6 @@ define([], function () {
 
             var resolve = function (baseName, path, secure) {
                     if (!path) path = '';
-                    console.log(baseName);
                     var routeDef = {};
                     routeDef.templateUrl = function(params) {
                         if(params){

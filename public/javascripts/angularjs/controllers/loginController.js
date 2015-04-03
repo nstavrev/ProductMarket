@@ -1,5 +1,5 @@
 define(['app'], function (app) {
-    app.register.controller('loginController', function($scope, LoginService, $location){
+    app.controller('loginController', function($scope, $modalInstance, LoginService){
         $scope.userData = {};
 
         $scope.login = function() {
@@ -7,12 +7,17 @@ define(['app'], function (app) {
               .then(
               function(success){
                 sessionStorage['currentUser'] = success.data;
-                $location.path("/");
+                $scope.cancel();
               },
               function(error){
                   $scope.loginError = error.data;
               }
           );
         };
+
+        $scope.cancel = function() {
+          $modalInstance.dismiss('cancel');
+        };
+
     });
 });

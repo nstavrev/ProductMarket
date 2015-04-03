@@ -11,82 +11,85 @@
         <link href="/stylesheets/fonts.css" rel="stylesheet">
 		<link href="/stylesheets/general.css" rel="stylesheet">
         <link href="/stylesheets/style.css" rel="stylesheet">
+         <link href="/stylesheets/form.css" rel="stylesheet">
         <link href="/stylesheets/autocomplete.css" rel="stylesheet" >
 		<!--<link href="/fonts/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">-->
     </head>
     <body ng-controller="menuController" ng-cloak>
-    <nav class="navbar navbar-inverse navbar-fixed-top {{menuClass}}" role="navigation">
-        <div class="container">
-				<div class="menu-triger-holder">
-					<button id="tiger-main-menu" class="btn-main-menu {{menuClass}}" ng-click="changeMenuClass()">
-						<span></span>
-					</button>
-				</div>
-				<div id="logo-holder">
-					<a href="#/"><img class="img-responsive" src="/images/company-logo.png" alt="company logo"></a>
-				</div>
-				<span class="ico icon-search"></span>
-				<label for="general-search"><i class="fa fa-search"></i></label>
-				<input  auto-complete
-                        ng-model="selected" type="text"
-                        id="general-search"
-                        name="general-search"
-                        placeholder="{{labels[locale].search}}"/>
-				
-				<div class="sing-in-and-cart">
-					<div ng-if="sessionStorage.currentUser == undefined">
-						<a ng-href="#/login" class="nav-btn">
-							{{labels[locale].signin}}
+	<div class="page-row">
+	    <nav class="navbar navbar-inverse navbar-fixed-top {{menuClass}}" role="navigation">
+	        <div class="container">
+					<div class="menu-triger-holder">
+						<button id="tiger-main-menu" class="btn-main-menu {{menuClass}}" ng-click="changeMenuClass()">
+							<span></span>
+						</button>
+					</div>
+					<div id="logo-holder">
+						<a href="#/"><img class="img-responsive" src="/images/company-logo.png" alt="company logo"></a>
+					</div>
+					<span class="ico icon-search"></span>
+					<label for="general-search"><i class="fa fa-search"></i></label>
+					<input  auto-complete
+	                        ng-model="selected" type="text"
+	                        id="general-search"
+	                        name="general-search"
+	                        placeholder="{{labels[locale].search}}"/>
+					
+					<div class="sing-in-and-cart">
+						<div ng-if="sessionStorage.currentUser == undefined">
+							<a href="" class="nav-btn" ng-click="openLogin()">
+								{{labels[locale].signin}}
+							</a>
+							<a href="" class="nav-btn last" ng-click="openRegister()">
+	                            {{labels[locale].signup}}
+							</a>
+						</div>
+						<div ng-if="sessionStorage.currentUser != undefined">
+							<a ng-href="#/myprofile" class="nav-btn btn-profile"></a>
+							<button ng-click="logout()" class="nav-btn btn-logout"></button>
+						</div>
+						<a class="cart-img-nav" href="#shoppingcart">
+							<img src="/images/shopping-cart.png">
 						</a>
-						<a ng-href="#/register" class="nav-btn">
-                            {{labels[locale].signup}}
-						</a>
 					</div>
-					<div ng-if="sessionStorage.currentUser != undefined">
-						<a ng-href="#/myprofile" class="nav-btn btn-profile"></a>
-						<button ng-click="logout()" class="nav-btn btn-logout"></button>
-					</div>
-					<a class="cart-img-nav" href="#shoppingcart">
-						<img src="/images/shopping-cart.png">
-					</a>
-				</div>
-                <div>
-                    <select ng-model="locale">
-                        <option value="bg">Български</option>
-                        <option value="en">English</option>
-                    </select>
-                </div>
-        </div>
-        <!-- /.container -->
-    </nav>
-	<nav id="menu-outer-wrapper" class="menu-outer-wrapper" ng-click="">
-		<div class="main-menu-container has-no-scrollbar">
-			<ul role="navigation" id="main-menu" class="main-menu">
-				<li style="padding-top:10px; padding-bottom: 10px;">
-					<a href="#/" class="category-link">Home</a>
-				</li>
-				<% categories.forEach(function(category, index) { %>
-				<li>
-					<div class="menu-category">
-						<a href="javascript:void(0)" class="category-link"><%= category.name %></a><i class="fa fa-plus"></i>
-					</div>
-					<% if(category.subCategories) { %>
-					<ul class="menu-subcategory">
-						<li>
-							<a href="#category/<%-category.name%>" class="category-link">All</a>
-						</li>
-						<% category.subCategories.forEach(function(subCategory, index) { %>
-						<li>
-							<a ng-href="#category/<%-category.name%>/<%- subCategory.name%>" class="category-link"> <%= subCategory.name %> </a>
-						</li>
-						<% }); %>
-						
-					</ul>
-					<% } %>
-				</li>
-				 <% });%>
-			</ul>
-		</div>
-	</nav>
+	                <div class="language">
+	                	<a ng-class="{ active : locale=='bg' }" ng-click="changeLang('bg')">BG</a>
+	                	<a ng-class="{ active : locale=='en' }" ng-click="changeLang('en')">EN</a>
+	                </div>
+	        </div>
+	        <!-- /.container -->
+	    </nav>
+		<nav id="menu-outer-wrapper" class="menu-outer-wrapper" ng-click="">
+			<div class="main-menu-container has-no-scrollbar">
+				<ul role="navigation" id="main-menu" class="main-menu">
+					<li style="padding-top:10px; padding-bottom: 10px;">
+						<a href="#/" class="category-link">Home</a>
+					</li>
+					<% categories.forEach(function(category, index) { %>
+					<li>
+						<div class="menu-category">
+							<a href="javascript:void(0)" class="category-link"><%= category.name %></a><i class="fa fa-plus"></i>
+						</div>
+						<% if(category.subCategories) { %>
+						<ul class="menu-subcategory">
+							<li>
+								<a href="#category/<%-category.name%>" class="category-link">All</a>
+							</li>
+							<% category.subCategories.forEach(function(subCategory, index) { %>
+							<li>
+								<a ng-href="#category/<%-category.name%>/<%- subCategory.name%>" class="category-link"> <%= subCategory.name %> </a>
+							</li>
+							<% }); %>
+							
+						</ul>
+						<% } %>
+					</li>
+					 <% });%>
+				</ul>
+			</div>
+		</nav>
+	</div>
 	<div class="overlay-blur {{menuClass}}"></div>
+
+
 		

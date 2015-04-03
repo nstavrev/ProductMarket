@@ -1,16 +1,19 @@
 define(['app'], function (app) {
-    app.register.controller('registerController', function($scope, RegisterService, $location){
+    app.controller('registerController', function($scope, $modalInstance, RegisterService){
         $scope.user = {};
 
         $scope.signup = function() {
             RegisterService.signup($scope.user).then(function(data){
                 $scope.user = {};
                 sessionStorage['currentUser'] = data;
-                $location.path("/");
+                $scope.cancel();
             },
             function(error){
                $scope.signupError = "Error";
             });
         };
+        $scope.cancel = function(){
+            $modalInstance.dismiss('cancel');
+        }
     });
 });

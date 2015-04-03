@@ -1,60 +1,40 @@
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-9">
-            <!-- begin register -->
-            <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="panel-title">{{labels[locale].signup}}</div>
-                        <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#/login">{{labels[locale].signin}}</a></div>
-                    </div>
-                    <div class="panel-body" >
-                        <form id="signupform" class="form-horizontal" role="form">
-
-                            <div id="signupalert" ng-if="signupError" class="alert alert-danger">
-                                <p>{{signupError}}</p>
-                                <span></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="firstname" class="col-md-3 control-label">{{labels[locale].firstname}}</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" ng-model="user.firstname" placeholder="{{labels[locale].firstname}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastname" class="col-md-3 control-label">{{labels[locale].lastname}}</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" ng-model="user.lastname" placeholder="{{labels[locale].lastname}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="col-md-3 control-label">{{labels[locale].email}}</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" ng-model="user.username" placeholder="{{labels[locale].email}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="col-md-3 control-label">{{labels[locale].password}}</label>
-                                <div class="col-md-9">
-                                    <input type="password" class="form-control" ng-model="user.password" placeholder="{{labels[locale].password}}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <!-- Button -->
-                                <div class="col-md-offset-3 col-md-9">
-                                    <button id="btn-signup" ng-click="signup()" type="button" class="btn btn-info">
-                                        <i class="icon-hand-right"></i> {{labels[locale].signup}}
-                                    </button>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
+    <div class="form-skin">
+        <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+        <!-- begin register -->
+        <div id="signupbox" class="single-form">
+            <div class="form-header-holder">
+                <h1 class="form-header">{{labels[locale].signup}}</h1>
             </div>
-            <!-- end register -->
+            <div class="form-content" >
+                <form id="signupform" class="form-horizontal" role="form">
+
+                    <div id="signupalert" ng-if="signupError" class="alert alert-danger">
+                        <p>{{signupError}}</p>
+                        <span></span>
+                    </div>
+                    <label for="firstname" class="form-icon"><i class="glyphicon glyphicon-user"></i></label>
+                    <input type="text" id="firstname" class="form-control" ng-model="user.firstname" placeholder="{{labels[locale].firstname}}">
+
+                    <label for="lastname" class="form-icon"><i class="glyphicon glyphicon-user"></i></label>
+                    <input type="text" id="lastname" class="form-control" ng-model="user.lastname" placeholder="{{labels[locale].lastname}}">
+
+                    <label for="email" class="form-icon"><i class="glyphicon glyphicon-envelope"></i></label>
+                    <input type="text" id="email" class="form-control" ng-model="user.username" placeholder="{{labels[locale].email}}">
+
+
+                    <label for="password" class="form-icon"><i class="glyphicon glyphicon-lock"></i></label>
+                    <input type="password" id="password" class="form-control" ng-model="user.password" placeholder="{{labels[locale].password}}">
+
+                    <!-- Button -->
+                    <button id="btn-signup" ng-click="signup()" type="button" class="btn btn-form">
+                        {{labels[locale].signup}}
+                    </button>
+                </form>
+            </div>
         </div>
+        <!-- end register -->
     </div>
 </div>
 

@@ -1,5 +1,6 @@
 define(['app'], function (app) {
-    app.register.controller('homeController', function($http, $scope,$routeParams, HomeService){
+    app.register.controller('homeController', function($http, $scope, $routeParams, HomeService, 
+      $modal){
         $scope.homePage = $routeParams.name == undefined;
         $scope.parentCategory = $routeParams.name != undefined ? "/" + $routeParams.name : "";
 
@@ -30,7 +31,6 @@ define(['app'], function (app) {
         });
 
         HomeService.getLastestProducts().then(function(result){
-          console.log(result.data);
           var slides = $scope.productSlides = result.data;
         });
 
@@ -46,7 +46,15 @@ define(['app'], function (app) {
 			$scope.columnClass = '12';
 		}
 		
-		
+		$scope.quickViewProduct = function(product){
+      $scope.product = product;
+      var modalInstance = $modal.open({
+        templateUrl: 'quickViewProduct',
+        controller : 'ModalInstanceCtrl',
+        scope : $scope,
+        windowClass : 'view-product-dialog'
+      });
+    };
 		
 		
     });
