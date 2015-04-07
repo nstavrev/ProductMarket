@@ -2,10 +2,10 @@
 	 <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
 	<div class="row">
 		<div class="col-md-5">
-			<img ng-src="{{product.image[0].url}}" class="img-responsive main-img" alt="{{product.name}}" />
+			<img ng-src="{{activeImgUrl}}" class="img-responsive main-img" alt="{{product.name}}" />
 			<div class="small-img-holder clearfix">	
-				<div class="small-img" ng-repeat="img in product.image">
-					<img ng-src="{{img.url}}" class="img-responsive" alt="{{product.name}}"/>
+				<div class="small-img" ng-repeat="img in product.image" >
+					<img ng-src="{{img.url}}" class="img-responsive" alt="{{product.name}}" ng-click="changeActiveImg(img)" ng-class="{ active : activeImg == img }"/>
 				</div>
 			</div>
 		</div>
@@ -17,9 +17,15 @@
 		    
 		    <div id="my-tab-content" class="tab-content">
 		        <div class="tab-pane active" id="summary">
-					<h3>{{product.name}}</h3>
-					<div>${{product.price}}</div>
-					<div>{{product.description}}</div>
+					<h2 class="product-name"><a target="_blank" ng-href="#product/{{product._id}}">{{product.name}}</a></h2>
+					<div class="product-price">${{product.price}}</div>
+					<div class="product-description"><p>{{product.description}}</p></div>
+					<p><span class="bold">{{labels[locale].availability}}:</span> {{labels[locale].instock}}</p>
+					<button class="btn-buy" ng-click="buy(product)">{{labels[locale].buy}}</button>
+					<div ng-if="shoppingcart.items[product._id]" class="cart-img-holder">
+						<div class="cart-circle">{{shoppingcart.items[product._id].qty}}</div>
+						<img class="img-responsive" src="/images/shopping-cart.png"/>
+					</div>
 		        </div>
 		        <div class="tab-pane" id="details">
 		            <h3>Details</h3>

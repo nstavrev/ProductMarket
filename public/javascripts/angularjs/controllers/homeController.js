@@ -49,8 +49,16 @@ define(['app'], function (app) {
         scope : $scope,
         windowClass : 'view-product-dialog'
       });
-    };
-		
+
+      $scope.activeImg = product.image[0];
+      $scope.activeImgUrl = product.image[0].url;
+
+      $scope.changeActiveImg = function(image) {
+        $scope.activeImgUrl = image.url;
+        $scope.activeImg = image;
+      };
+    };		
+    
 		
     });
 });

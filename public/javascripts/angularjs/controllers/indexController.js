@@ -1,5 +1,5 @@
 define(['app'], function (app) {
-	app.controller('menuController', function($scope, $routeParams, HomeService, LoginService, 
+	app.controller('indexController', function($scope, $routeParams, HomeService, LoginService, 
 		$location,  $modal, $log, $timeout){
             $scope.sessionStorage = sessionStorage;
 
@@ -33,6 +33,7 @@ define(['app'], function (app) {
             };
             $scope.changeLang = function(lang) {
             	$scope.locale = lang;
+            	$scope.showHideLangSelector();
             };
             //open login
 			$scope.openLogin = function () {
@@ -52,6 +53,18 @@ define(['app'], function (app) {
 					scope : $scope,
 					windowClass : 'form-modal'
 				})
+			}
+
+			// language selector show and hide 
+			$scope.showLangSelector = false;
+			$scope.showHideLangSelector = function(){
+				if($scope.showLangSelector == false){
+					console.log('1');
+					$scope.showLangSelector = true;
+				}
+				else{
+					$scope.showLangSelector = false;
+				}
 			}
 
 		}

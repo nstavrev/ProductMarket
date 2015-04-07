@@ -36,7 +36,8 @@ var labels = {
         close : "Close",
         view : "Quick View",
         summary : "Summary",
-        details : "Details"
+        details : "Details",
+        availability: 'Availability'
     },
     bg : {
         signup : "Регистрация",
@@ -66,7 +67,8 @@ var labels = {
         close : "Затвори",
         view : "Преглед",
         summary : "Основна информация",
-        details : "Детайли"
+        details : "Детайли",
+        availability: 'Наличност'
     }
 }
 
@@ -169,6 +171,7 @@ function insertProducts(categories){
     });
     return def.promise();
 };
+
 
 /*
 insertCategories().done(function(categories){

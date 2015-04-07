@@ -15,7 +15,7 @@
         <link href="/stylesheets/autocomplete.css" rel="stylesheet" >
 		<!--<link href="/fonts/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">-->
     </head>
-    <body ng-controller="menuController" ng-cloak>
+    <body ng-controller="indexController" ng-cloak>
 	<div class="page-row">
 	    <nav class="navbar navbar-inverse navbar-fixed-top {{menuClass}}" role="navigation">
 	        <div class="container">
@@ -48,14 +48,25 @@
 							<a ng-href="#/myprofile" class="nav-btn btn-profile"></a>
 							<button ng-click="logout()" class="nav-btn btn-logout"></button>
 						</div>
-						<a class="cart-img-nav" href="#shoppingcart">
-							<img src="/images/shopping-cart.png">
-						</a>
+						<div class="language">
+							<div class="active-lang" ng-click="showHideLangSelector()">
+								<a href="">
+									{{locale}}
+									<i class="glyphicon glyphicon-chevron-down">
+								</i>
+								</a>
+							</div>
+							<ul class="select-lang" ng-show="showLangSelector">
+								<li><a ng-class="{ active : locale=='bg' }" ng-click="changeLang('bg')">BG</a></li>
+								<li><a ng-class="{ active : locale=='en' }" ng-click="changeLang('en')">EN</a></li>
+							</ul>	
+		                </div>
+		                <div class="cart-img-nav">
+		                	<a href="#shoppingcart">
+								<img src="/images/shopping-cart.png">
+							</a>
+		                </div>
 					</div>
-	                <div class="language">
-	                	<a ng-class="{ active : locale=='bg' }" ng-click="changeLang('bg')">BG</a>
-	                	<a ng-class="{ active : locale=='en' }" ng-click="changeLang('en')">EN</a>
-	                </div>
 	        </div>
 	        <!-- /.container -->
 	    </nav>

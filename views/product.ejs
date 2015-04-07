@@ -3,18 +3,20 @@
     <div class="content-wrapper" ng-if="product">
         <div class="item-container">
             <div class="container">
-                <div class="col-md-12">
-                    <div class="product col-md-3 service-image-left">
-                            <img id="item-display" ng-src="{{product.image[0].url}}" alt=""/>
+            <div class="col-md-12">
+                    <div class="col-md-4">
+                            <img ng-src="{{product.image[0].url}}" class="img-responsive" alt="{{product.name}}"/>
                     </div>
-                    <div class="container service1-items col-sm-2 col-md-2 pull-left">
-                            <a ng-repeat="image in product.image track by $index" id="item-$index" class="service$index-item">
-                                <img ng-src="{{image.url}}" alt=""/>
+                    <div class="col-md-8">
+                        <div class="col-md-3" ng-repeat="image in product.image track by $index" id="item-$index">
+                            <a>
+                                <img ng-src="{{image.url}}" class="img-responsive" alt="{{product.name}}"/>
                             </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-7">
+                <div class="col-md-12">
                     <div class="product-title">{{product.name}}</div>
                     <div class="product-desc">
                         {{product.description}}

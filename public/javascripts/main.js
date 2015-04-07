@@ -13,7 +13,7 @@ require(
         'directives/autocomplete',
         'directives/productsSlide',
         'controllers/modalInstanceController',
-		'controllers/menuController',
+		'controllers/indexController',
         'controllers/loginController',
         'controllers/registerController',
         'services/routeResolver',
